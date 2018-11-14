@@ -16,9 +16,6 @@ public class LightDto {
         this.roomId = light.getRoom().getId();
     }
 
-    public LightDto() {
-    }
-
     public LightDto(Integer level, Status status, Long roomId) {
         this.level = level;
         this.status = status;
