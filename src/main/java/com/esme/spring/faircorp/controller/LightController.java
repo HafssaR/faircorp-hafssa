@@ -3,8 +3,8 @@ package com.esme.spring.faircorp.controller;
 import com.esme.spring.faircorp.model.Light;
 import com.esme.spring.faircorp.model.LightDto;
 import com.esme.spring.faircorp.model.Status;
-import com.esme.spring.faircorp.repository.LightDAO;
-import com.esme.spring.faircorp.repository.RoomDAO;
+import com.esme.spring.faircorp.repository.LightDao;
+import com.esme.spring.faircorp.repository.RoomDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +18,10 @@ import java.util.stream.Collectors;
 public class LightController {
 
     @Autowired
-    private  LightDAO lightDao;
+    private LightDao lightDao;
 
     @Autowired
-    private RoomDAO roomDao;
+    private RoomDao roomDao;
 
     @GetMapping
     public List<LightDto> findAll() {
@@ -50,7 +50,7 @@ public class LightController {
             light = lightDao.findById(dto.getId()).orElse(null);
         }
 
-        if (light == null) {
+         if (light == null) {
             System.out.println(dto.getLevel());
             System.out.println(dto.getRoomId());
             light = lightDao.save(new Light(roomDao.getOne(dto.getRoomId()), dto.getLevel(), dto.getStatus()));

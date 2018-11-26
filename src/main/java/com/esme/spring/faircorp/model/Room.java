@@ -19,7 +19,18 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Light> lightList;
 
+    @ManyToOne
+    private Building building;
+
     public Room() {
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 
     public Room(String name, Integer floor){
